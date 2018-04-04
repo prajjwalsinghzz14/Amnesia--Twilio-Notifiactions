@@ -1,0 +1,68 @@
+{% extends 'sms_alert/base.html' %}
+    <!-- Navigation Bar Ends -->
+    {% block content %}
+    <!-- Main Body Starts Here -->
+    <div class="container-fluid">
+
+        <!-- Jumbotron Here -->
+        <div class="jumbotron col-md-4 col-sm-12 col-md-offset-4" >
+
+            <div class="container ">
+
+                <form  method="post">
+                {% csrf_token %}
+
+                    <div>
+                        <h3> Sleep Cycle.</h3><hr class="alert-danger">
+                    </div>
+                    <div class="form-group">
+                        <label for="sleepTime">Bed Time</label>
+                        <input type="time" id="sleepTime" class="form-control" name="sleep_time">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Awake</label>
+                        <input type="time" id="wakeTime" class="form-control" name="awake_time">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Sleep Hours</label>
+                        <input type="text" class="form-control" id="diff" name="sleep_hours">
+                    </div>
+
+                    <script type="text/javascript">
+                        var startTime = document.getElementById("startTime");
+                        var valueSpan = document.getElementById("diff");
+
+                        startTime.addEventListener("input", function() {
+                          valueSpan.innerText = "hello world";
+                        }, false);
+
+                    </script>
+
+                    <div class="form-group " style="position: center">
+                        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="edit">Edit</button>
+                    </div>
+                    <script type="text/javascript">
+                        var x=0;
+                         $( "#submit" ).click(function() {
+                             if(x==0) {
+                                 $('#sleepTime').prop('disabled', true);
+                                 x=1;
+                             }
+                             if(x==1{
+                                 $('#edit').prop('disabled', false);
+                                 x=0;
+                             }
+            });
+                    </script>
+            </form>
+
+
+            </div>
+        </div>
+
+        <!-- Jumbotron Ends -->
+    </div>
+    {% endblock %}

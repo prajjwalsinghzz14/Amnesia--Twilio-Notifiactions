@@ -1,0 +1,44 @@
+{% extends 'sms_alert/base.html' %}
+    <!-- Navigation Bar Ends -->
+    {% block content %}
+    <!-- Main Body Starts Here -->
+    <div class="container-fluid">
+
+        <!-- Jumbotron Here -->
+        <div class="jumbotron col-md-4 col-sm-12 col-md-offset-4" >
+
+            <div class="container ">
+
+                <div>
+                    <h3>  Hello!</h3><hr class="alert-danger">
+                </div>
+                <form  method="post" action="next.html">
+                {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="name">First Name</label>
+                    <input name="name" type="text" class="form-control" id="usr" >
+
+                </div>
+                <div class="form-group">
+                    <label>Country</label>
+                    {% include 'sms_alert/countries.html'%}
+                </div>
+
+                <div class="form-group">
+                    <label>Contact Number</label>
+                    <input type="tel" class="form-control" name="phone_number">
+                </div>
+                <div class="form-group">
+                    {{ form }}
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+
+            </div>
+        </div>
+
+        <!-- Jumbotron Ends -->
+    </div>
+    {% endblock %}
