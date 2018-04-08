@@ -9,9 +9,12 @@
 
             <div class="container ">
 
-                <form  method="post">
+                <form action="form_save.html" id="form_save">
                 {% csrf_token %}
-
+                    <input type="text" hidden="true" name="name" value="{{ name }}"/>
+                    <input type="text" hidden="true" name="phone_number" value="{{ phone_number }}"/>
+                    <input type="text" hidden="true" name="country" value="{{ country }}"/>
+                    <input type="text" hidden="true" name="time_zone" value="{{ time_zone }}"/>
                     <div>
                         <h3> Sleep Cycle.</h3><hr class="alert-danger">
                     </div>
@@ -51,7 +54,7 @@
                                  $('#sleepTime').prop('disabled', true);
                                  x=1;
                              }
-                             if(x==1{
+                             if(x==1){
                                  $('#edit').prop('disabled', false);
                                  x=0;
                              }
@@ -62,7 +65,22 @@
 
             </div>
         </div>
-
-        <!-- Jumbotron Ends -->
+        <script type="text/javascript">
+        $(function() {
+            $("#form_save").submit(function(event) {
+                event.preventDefault();
+                var friendForm = $(this);
+                var posting = $.post( friendForm.attr('action'), friendForm.serialize() );
+                posting.done(function(data) {
+                    alert('Alarm Set Successfully');
+                    window.location = "/sms_alert";
+                });
+                posting.fail(function(data) {
+                    alert('Failed to set alarm');
+                    window.location = "/sms_alert";
+                });
+            });
+        });
+        </script>
     </div>
     {% endblock %}
