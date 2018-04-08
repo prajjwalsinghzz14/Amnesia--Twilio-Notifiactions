@@ -6,8 +6,8 @@ from celery import Celery
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Amnesia.settings')
 
 app = Celery('Amnesia',
-             broker='amqp://',
-             backend='amqp://',
+             broker='redis://localhost:6379/0',
+             backend='redis://localhost:6379/0',
              include=['sms_alert.tasks']
              )
 
