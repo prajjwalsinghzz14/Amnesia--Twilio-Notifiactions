@@ -28,7 +28,6 @@ INSTALLED_APPS = [
     'django_celery_results',
     'timezone_field',
     'django_countries',
-    'djcelery',
     'sms_alert.apps.SmsAlertConfig',
     'django.contrib.admin',
     'django.contrib.auth',
